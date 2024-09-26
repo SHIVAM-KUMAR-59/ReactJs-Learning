@@ -1,5 +1,4 @@
 import styles from "./ButtonsContainer.module.css";
-import Buttons from "./Buttons";
 const ButtonsContainer = () => {
   const buttonNames = [
     "C",
@@ -24,7 +23,7 @@ const ButtonsContainer = () => {
     <>
       <div className={styles.buttonsContainer}>
         {buttonNames.map((names) => (
-          <Buttons name = {names}/>
+          <button className={styles.buttons}>{names}</button>
         ))}
       </div>
     </>

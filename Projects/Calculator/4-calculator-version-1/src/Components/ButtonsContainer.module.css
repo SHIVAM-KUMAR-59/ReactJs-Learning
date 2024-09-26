@@ -3,3 +3,11 @@
     justify-content: center;
     flex-wrap: wrap;
 }
+
+.buttons{
+    width: 23%;
+    height: 45px;
+    margin: 5px;
+    border: 1px solid gray;
+    border-radius: 5px;
+}
