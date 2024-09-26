@@ -1,34 +1,26 @@
-import { useState } from "react";
+import { useRef, useState } from "react";
 import { BiMessageAdd } from "react-icons/bi";
 
 function AddTodo({ onNewItem }) {
-  // State to store the name of the todo
-  const [todoName, setTodoName] = useState("");
 
-  // State to store the due date of the todo
-  const [todoDueDate, setTodoDueDate] = useState("");
+  const todoNameElement = useRef();
+  const dueDateElement = useRef();
 
-  // Handler for the name input change event
-  const handleNameChange = (e) => {
-    setTodoName(e.target.value); // Update todo name state with the value from the input
-  };
-
-  // Handler for the due date input change event
-  const handleDateChange = (e) => {
-    setTodoDueDate(e.target.value); // Update due date state with the value from the date input
-  };
 
   // Handler for the Add Task button click event
   const handleAddButton = (e) => {
 
     e.preventDefault();
 
+    const todoName = todoNameElement.current.value;
+    const todoDueDate = dueDateElement.current.value;
+
+    todoNameElement.current.value = "";
+    dueDateElement.current.value = "";
+    
     // Call the onNewItem function (passed from parent) to add the new todo
     onNewItem(todoName, todoDueDate);
 
-    // Clear the input fields after adding the task
-    setTodoName("");
-    setTodoDueDate("");
   };
 
   return (
@@ -39,8 +31,7 @@ function AddTodo({ onNewItem }) {
           <input
             type="text"
             placeholder="Enter Todo Here"
-            value={todoName} // Controlled input for todo name
-            onChange={handleNameChange} // Call handler when input value changes
+            ref={todoNameElement}
           />
         </div>
 
@@ -48,8 +39,7 @@ function AddTodo({ onNewItem }) {
         <div className="col-4">
           <input
             type="date"
-            value={todoDueDate} // Controlled input for due date
-            onChange={handleDateChange} // Call handler when date value changes
+            ref={dueDateElement}
           />
         </div>
 

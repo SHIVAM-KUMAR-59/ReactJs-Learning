@@ -6,20 +6,19 @@ import { useState } from "react"; // Hook for managing state
 import WelcomeMsg from "./Components/WelcomeMsg"; // Component to display a welcome message when no todos are present
 
 function App() {
-  // Initial empty list of todo items
-  const initialTodoItems = [];
-
   // State to store and update the list of todo items
-  const [todoItems, setTodoItems] = useState(initialTodoItems);
+  const [todoItems, setTodoItems] = useState([]);
 
   // Function to handle adding a new todo item
   const handleNewItem = (itemName, itemDueDate) => {
     if (!(itemName === "" || itemDueDate === "")) {
-      const newTodoItem = [
-        ...todoItems, // Spread the current todo items
-        { name: itemName, dueDate: itemDueDate }, // Add the new item to the list
-      ];
-      setTodoItems(newTodoItem); // Update the state with the new item
+      setTodoItems((currentValue) => {
+        const newTodoItem = [
+          ...currentValue, // Spread the current todo items
+          { name: itemName, dueDate: itemDueDate }, // Add the new item to the list
+        ];
+        return newTodoItem; // Return the new item
+      });
     }
   };
 
