@@ -1,8 +1,8 @@
-import AddTodo from "./Components/AddTodo"; // Component for adding a new todo item
+import AddTodo from "./Components/AddTodo"; // Component htmlfor adding a new todo item
 import AppName from "./Components/AppName"; // Component to display the application name
-import "./App.css"; // CSS for styling the app
+import "./App.css"; // CSS htmlfor styling the app
 import TodoItems from "./Components/TodoItems"; // Component to display the list of todo items
-import { useState } from "react"; // Hook for managing state
+import { useState } from "react"; // Hook htmlfor managing state
 import WelcomeMsg from "./Components/WelcomeMsg"; // Component to display a welcome message when no todos are present
 
 function App() {
@@ -31,7 +31,7 @@ function App() {
 
   return (
     <>
-      {/* Main container for the todo application */}
+      {/* Main container htmlfor the todo application */}
       <center className="todo-container">
         {/* Display the application name */}
         <AppName />

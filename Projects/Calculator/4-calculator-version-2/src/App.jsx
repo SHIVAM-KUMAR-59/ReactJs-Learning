@@ -21,7 +21,7 @@ function App() {
       let flag = 1;
 
       // Loop to check if there are any consecutive operators in the input
-      for (let i = 0; i < calVal.length; i++) {
+      htmlfor (let i = 0; i < calVal.length; i++) {
         // If consecutive operators are found, show syntax error
         if (isOperator(calVal[i]) && isOperator(calVal[i + 1])) {
           setCalVal("Syntax Error");
@@ -46,7 +46,7 @@ function App() {
       // "C" button clicked: Remove the last character from the input
       setCalVal(calVal.slice(0, -1));
     } else {
-      // For other button clicks (numbers and operators), append the clicked value to the display
+      // htmlfor other button clicks (numbers and operators), append the clicked value to the display
       const newDisplayValue = calVal + buttonText;
       setCalVal(newDisplayValue);  // Update the state with the new value
     }

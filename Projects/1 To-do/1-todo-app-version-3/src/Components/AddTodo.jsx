@@ -7,7 +7,7 @@ function AddTodo({ onNewItem }) {
   const dueDateElement = useRef();
 
 
-  // Handler for the Add Task button click event
+  // Handler htmlfor the Add Task button click event
   const handleAddButton = (e) => {
 
     e.preventDefault();
@@ -26,7 +26,7 @@ function AddTodo({ onNewItem }) {
   return (
     <div className="container text-center">
       <form className="row kg-row" onSubmit={handleAddButton} >
-        {/* Input field for the todo name */}
+        {/* Input field htmlfor the todo name */}
         <div className="col-6">
           <input
             type="text"
@@ -35,7 +35,7 @@ function AddTodo({ onNewItem }) {
           />
         </div>
 
-        {/* Input field for the todo due date */}
+        {/* Input field htmlfor the todo due date */}
         <div className="col-4">
           <input
             type="date"
