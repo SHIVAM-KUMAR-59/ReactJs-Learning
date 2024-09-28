@@ -1,0 +1,38 @@
+.app-container {
+  display: flex;
+}
+
+.content {
+  width: 100%;
+}
+
+.sidebar {
+  height: 100vb;
+}
+
+.post-card{
+  margin: 20px 50px;
+}
+
+.hashtag{
+  margin: 0px 3px;
+}
+
+.like{
+  margin-top: 5px;
+  font-size: 20px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 5px; 
+
+  span{
+    font-size: 18px;
+  }
+}
+
+.create-post{
+  width: 80%;
+  margin: auto;
+  margin-top: 50px;
+}
