@@ -1,61 +1,67 @@
 import { useContext, useRef } from "react";
-import { PostList } from "../Store/Post-list-store";
+import { PostList } from "../store/post-list-store";
 
 const CreatePost = () => {
   const { addPost } = useContext(PostList);
 
-  const userId = useRef();
-  const postTitle = useRef();
-  const postBody = useRef();
-  const tags = useRef();
+  const userIdElement = useRef();
+  const postTitleElement = useRef();
+  const postBodyElement = useRef();
+  const reactionsElement = useRef();
+  const tagsElement = useRef();
 
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    const user = userId.current.value;
-    const title = postTitle.current.value;
-    const body = postBody.current.value;
-    const tagsArray = tags.current.value.split(' ');
-    addPost(user, title, body, tagsArray);
-    userId.current.value = "";
-    postTitle.current.value = "";
-    postBody.current.value = "";
-    tags.current.value = "";
+  const handleSubmit = (event) => {
+    event.preventDefault();
+    const userId = userIdElement.current.value;
+    const postTitle = postTitleElement.current.value;
+    const postBody = postBodyElement.current.value;
+    const reactions = reactionsElement.current.value;
+    const tags = tagsElement.current.value.split(" ");
+
+    userIdElement.current.value = "";
+    postTitleElement.current.value = "";
+    postBodyElement.current.value = "";
+    reactionsElement.current.value = "";
+    tagsElement.current.value = "";
+
+    addPost(userId, postTitle, postBody, reactions, tags);
   };
+
   return (
     <form className="create-post" onSubmit={handleSubmit}>
       <div className="mb-3">
-        <label forname="userId" className="form-label">
-          User Id
+        <label htmlFor="userId" className="form-label">
+          Enter your User Id here
         </label>
         <input
           type="text"
-          ref={userId}
+          ref={userIdElement}
           className="form-control"
           id="userId"
-          placeholder="Enter your User Id"
+          placeholder="Your User Id"
         />
       </div>
 
       <div className="mb-3">
-        <label forname="title" className="form-label">
+        <label htmlFor="title" className="form-label">
           Post Title
         </label>
         <input
           type="text"
-          ref={postTitle}
+          ref={postTitleElement}
           className="form-control"
           id="title"
-          placeholder="How are you feeling today?"
+          placeholder="How are you feeling today..."
         />
       </div>
 
       <div className="mb-3">
-        <label forname="body" className="form-label">
+        <label htmlFor="body" className="form-label">
           Post Content
         </label>
         <textarea
           type="text"
-          ref={postBody}
+          ref={postBodyElement}
           rows="4"
           className="form-control"
           id="body"
@@ -64,15 +70,28 @@ const CreatePost = () => {
       </div>
 
       <div className="mb-3">
-        <label forname="tags" className="form-label">
-          Enter relevant tags
+        <label htmlFor="reactions" className="form-label">
+          Number of reactions
         </label>
         <input
           type="text"
-          ref={tags}
+          ref={reactionsElement}
+          className="form-control"
+          id="reactions"
+          placeholder="How many people reacted to this post"
+        />
+      </div>
+
+      <div className="mb-3">
+        <label htmlFor="tags" className="form-label">
+          Enter your hashtags here
+        </label>
+        <input
+          type="text"
           className="form-control"
           id="tags"
-          placeholder="Please Enter tags using Space"
+          ref={tagsElement}
+          placeholder="Please enter tags using space"
         />
       </div>
 

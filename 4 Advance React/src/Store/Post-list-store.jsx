@@ -4,52 +4,35 @@ export const PostList = createContext({
   postList: [],
   addPost: () => {},
   deletePost: () => {},
-  updateReactions: () => {}, 
 });
 
-const postListReducer = (currentPostList, action) => {
-  let newPostList = currentPostList;
-  
-  switch (action.type) {
-    case "DELETE_POST":
-      newPostList = currentPostList.filter(
-        (post) => post.id !== action.payload.postId
-      );
-      break;
-
-    case "ADD_POST":
-      newPostList = [action.payload, ...currentPostList];
-      break;
-
-    case "UPDATE_REACTIONS":
-      newPostList = currentPostList.map((post) =>
-        post.id === action.payload.postId
-          ? { ...post, reactions: action.payload.reactions }
-          : post
-      );
-      break;
-
-    default:
-      break;
+const postListReducer = (currPostList, action) => {
+  let newPostList = currPostList;
+  if (action.type === "DELETE_POST") {
+    newPostList = currPostList.filter(
+      (post) => post.id !== action.payload.postId
+    );
+  } else if (action.type === "ADD_POST") {
+    newPostList = [action.payload, ...currPostList];
   }
-
   return newPostList;
 };
 
 const PostListProvider = ({ children }) => {
   const [postList, dispatchPostList] = useReducer(
     postListReducer,
-    DEFUALT_POST_LIST
+    DEFAULT_POST_LIST
   );
 
-  const addPost = (userId, postTitle, postBody, tags) => {
+  const addPost = (userId, postTitle, postBody, reactions, tags) => {
     dispatchPostList({
       type: "ADD_POST",
       payload: {
         id: Date.now(),
         title: postTitle,
         body: postBody,
-        reactions: 0,
+        reactions: reactions,
+        userId: userId,
         tags: tags,
       },
     });
@@ -59,52 +42,34 @@ const PostListProvider = ({ children }) => {
     dispatchPostList({
       type: "DELETE_POST",
       payload: {
-        postId: postId,
-      },
-    });
-  };
-
-  // Function to update the number of reactions for a specific post
-  const updateReactions = (postId, newReactions) => {
-    dispatchPostList({
-      type: "UPDATE_REACTIONS",
-      payload: {
-        postId: postId,
-        reactions: newReactions,
+        postId,
       },
     });
   };
 
   return (
-    <PostList.Provider
-      value={{
-        postList: postList,
-        addPost: addPost,
-        deletePost: deletePost,
-        updateReactions: updateReactions, // Expose the updateReactions function
-      }}
-    >
+    <PostList.Provider value={{ postList, addPost, deletePost }}>
       {children}
     </PostList.Provider>
   );
 };
 
-const DEFUALT_POST_LIST = [
+const DEFAULT_POST_LIST = [
   {
     id: "1",
     title: "Going to Mumbai",
-    body: "Hey friends I am Going to Mumbai for my vacations hope to enjoy a lot. Peace Out!",
+    body: "Hi Friends, I am going to Mumbai for my vacations. Hope to enjoy a lot. Peace out.",
     reactions: 2,
     userId: "user-9",
-    tags: ["vacation", "mumbai", "chilling"],
+    tags: ["vacation", "Mumbai", "Enjoying"],
   },
   {
     id: "2",
-    title: "Pass ho gye bhai",
-    body: "4 Saal ke masti ke bad bhi ho gye h pass",
+    title: "Paas ho bhai",
+    body: "4 saal ki masti k baad bhi ho gaye hain paas. Hard to believe.",
     reactions: 15,
     userId: "user-12",
-    tags: ["college", "graduating", "btech"],
+    tags: ["Graduating", "Unbelievable"],
   },
 ];
 
