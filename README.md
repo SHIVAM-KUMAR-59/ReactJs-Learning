@@ -22,6 +22,19 @@ This repository serves as a collection of my progress as I dive into building re
 ## 🔍 How to Use
 
 1. **Clone the Repository**:
-   ```bash
+    ```bash
    git clone https://github.com/your-username/reactjs-learning-repository.git
+   
+2. **Navigate through the Projects**: Explore the folders for various React and Redux projects with Bootstrap integration.
+
+3. **Run Locally**:
+    (i) Install Dependencies:
+        ```bash
+        npm install
+    (ii) Start the development server:
+        ```bash
+        npm start
+
+🤝 **Contributions**
+This repository is for my personal learning journey, but feel free to explore the projects. Suggestions or helpful resources are always welcome!
 
