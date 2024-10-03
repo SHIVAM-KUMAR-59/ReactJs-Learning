@@ -35,7 +35,7 @@ This repository serves as a collection of my progress as I dive into building re
     npm install
     npm start
 
-🤝 **Contributions**:
+## 🤝 Contributions:
 
 This repository is for my personal learning journey, but feel free to explore the projects. Suggestions or helpful resources are always welcome!
 
