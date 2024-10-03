@@ -29,7 +29,7 @@ This repository serves as a collection of my progress as I dive into building re
 
 3. **Run Locally**:
 
-   (i) Install Dependencies  and start the development server:
+   Install Dependencies  and start the development server:
 
     ```bash
     npm install
