@@ -28,13 +28,14 @@ This repository serves as a collection of my progress as I dive into building re
 2. **Navigate through the Projects**: Explore the folders for various React and Redux projects with Bootstrap integration.
 
 3. **Run Locally**:
-    (i) Install Dependencies:
-        ```bash
-        npm install
-    (ii) Start the development server:
-        ```bash
-        npm start
 
-🤝 **Contributions**
+   Install Dependencies  and start the development server:
+
+    ```bash
+    npm install
+    npm start
+
+## 🤝 Contributions:
+
 This repository is for my personal learning journey, but feel free to explore the projects. Suggestions or helpful resources are always welcome!
 
